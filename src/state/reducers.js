@@ -1,6 +1,5 @@
 import * as types from './actionTypes';
 const initialState = {
-	additionalPrice: 0,
 	car: {
 		price: 26395,
 		name: '2019 Ford Mustang',
@@ -20,7 +19,7 @@ export const appReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case types.ADD_ITEM:
 			newFeatures = state.car.features
-				.filter(item => item.id !== action.payload.id)
+				.filter(id => id !== action.payload)
 				.concat(action.payload)
 			return {
 				...state,
@@ -28,17 +27,15 @@ export const appReducer = (state = initialState, action) => {
 					...state.car,
 					features: newFeatures
 				},
-				additionalPrice: newFeatures.reduce((total, item) => total + item.price, 0)
 			};
 		case types.REMOVE_ITEM:
-			newFeatures = state.car.features.filter(item => item.id !== action.payload);
+			newFeatures = state.car.features.filter(id => id !== action.payload);
 			return {
 				...state,
 				car: {
 					...state.car,
 					features: newFeatures
 				},
-				additionalPrice: newFeatures.reduce((total, item) => total + item.price, 0)
 			}
 		default:
 			return state;
