@@ -9,7 +9,17 @@ import App from './App';
 
 import 'bulma/css/bulma.css';
 import './styles.scss';
+/*
+import axiosWithAPIAuth from './helpers/axiosWithAPIAuth';
 
+const params = `?api_key=${process.env.REACT_APP_CAR_API_KEY}&car_type=new`
+axiosWithAPIAuth().get(`https://marketcheck-prod.apigee.net/v1/popular/cars${params}`)
+.then(response => {
+	console.log(response);
+}).catch(error => {
+	console.log('error', error)
+})
+*/
 const store = createStore(
 	combineReducers({
 		app: reducers.appReducer,
