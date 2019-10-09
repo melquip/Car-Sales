@@ -1,12 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import * as actionCreators from './state/actionCreators';
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
-const App = ({ additionalPrice, car, store }) => {
+const App = (props) => {
+  const { additionalPrice, car, store } = useSelector(state => state.app);
   return (
     <div className="boxes">
       <div className="box">
@@ -21,4 +22,4 @@ const App = ({ additionalPrice, car, store }) => {
   );
 };
 
-export default connect(state => state.app, actionCreators)(App);
+export default connect(null, actionCreators)(App);
