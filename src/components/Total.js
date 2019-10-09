@@ -1,11 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Total = props => {
-  return (
-    <div className="content">
-      <h4>Total Amount: ${props.car.price + props.additionalPrice}</h4>
-    </div>
-  );
+	const { car, additionalPrice } = useSelector(state => state.app);
+	return (
+		<div className="content">
+			<h4>Total Amount: ${car.price + additionalPrice}</h4>
+		</div>
+	);
 };
 
 export default Total;
