@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import * as storage from './helpers/localStorageState';
+import * as reducers from './state/reducers';
 import throttle from 'lodash/throttle';
+import * as storage from './helpers/localStorageState';
 import App from './App';
 
 import 'bulma/css/bulma.css';
@@ -11,9 +12,7 @@ import './styles.scss';
 
 const store = createStore(
 	combineReducers({
-		additionalPrice: reducers.addPriceReducer,
-		car: reducers.carReducer,
-		store: reducers.storeReducer
+		app: reducers.appReducer,
 	}),
 	storage.loadState(),
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
